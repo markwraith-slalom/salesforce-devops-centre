@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Permission set group for Sales Users with access to Account, Opportunity, and Case editing capabilities.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Sales User</label>
+    <permissionSets>Account_Edit</permissionSets>
+    <permissionSets>CaseEdit</permissionSets>
+    <permissionSets>Opportunity_Edit</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>
