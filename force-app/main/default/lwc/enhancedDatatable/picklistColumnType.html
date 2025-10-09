@@ -1,0 +1,28 @@
+<template>
+    <lightning-combobox
+        class="slds-p-vertical_xx-small slds-p-horizontal_x-small slds-hide"
+        variant="label-hidden"
+        value={value}
+        options={typeAttributes.picklistValues}
+        onchange={handleChange}
+        onblur={handleCancel}>
+    </lightning-combobox>
+
+    <template if:false={editMode}>
+        <div class="slds-grid slds-grid_align-spread slds-p-around_x-small">
+            <div class="slds-truncate slds-align-middle">
+                {value}
+            </div>
+            <template if:true={typeAttributes.editable}>
+                <div class="slds-align-middle slds-m-left_x-small">
+                    <lightning-button-icon 
+                        icon-name="utility:edit" 
+                        size="x-small" 
+                        variant="bare"
+                        onclick={handleEdit}>
+                    </lightning-button-icon>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

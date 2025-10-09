@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Contains PS for Tableau Next admin access</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>TableauNext_PSG</label>
+    <permissionSets>force__TableauEinsteinAdmin</permissionSets>
+    <permissionSets>force__TableauEinsteinAnalyst</permissionSets>
+    <permissionSets>force__TableauEinsteinIncludedAppBusinessUser</permissionSets>
+    <permissionSets>force__TableauIncludedAppManager</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>

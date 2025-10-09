@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HighValueOpportunity__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Automatically set to TRUE when the Opportunity Amount is greater than or equal to 100,000 USD. Used for high value opportunity reporting and identification.</description>
+    <label>High Value Opportunity</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Account Cases - Inline Editor" icon-name="standard:case">
+        <div class="slds-card__body slds-card__body_inner">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+            </template>
+            
+            <template if:true={error}>
+                <div class="slds-box slds-theme_error slds-m-bottom_small">
+                    <p>Error loading cases: {error.body.message}</p>
+                </div>
+            </template>
+
+            <template if:true={hasCases}>
+                <div class="slds-m-bottom_small">
+                    <p class="slds-text-body_small slds-text-color_weak">
+                        Click on any cell to edit basic case information inline, or use "Edit Details" for advanced fields.
+                    </p>
+                </div>
+                
+                <c-enhanced-datatable
+                    key-field="Id"
+                    data={cases}
+                    columns={columns}
+                    onrowaction={handleRowAction}
+                    onsave={handleSave}
+                    oncancel={handleCancel}
+                    onpicklistchange={handlePicklistChange}
+                    draft-values={draftValues}
+                    hide-checkbox-column="true">
+                </c-enhanced-datatable>
+            </template>
+
+            <template if:false={hasCases}>
+                <template if:false={isLoading}>
+                    <div class="slds-text-align_center slds-m-top_large">
+                        <lightning-icon icon-name="utility:cases" size="large" class="slds-m-bottom_small"></lightning-icon>
+                        <p class="slds-text-heading_small">No Cases Found</p>
+                        <p class="slds-text-body_regular">This account doesn't have any cases yet.</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+
+        <!-- Modal for detailed case editing -->
+        <template if:true={showDetailModal}>
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Edit Case Details</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <template if:true={selectedCaseId}>
+                            <c-case-detail-editor 
+                                record-id={selectedCaseId}
+                                onsave={handleModalSave}
+                                oncancel={closeModal}>
+                            </c-case-detail-editor>
+                        </template>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </template>
+    </lightning-card>
+</template>

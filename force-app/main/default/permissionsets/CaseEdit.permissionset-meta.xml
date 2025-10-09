@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Provides full CRUD access to Cases and Case fields including the new custom fields.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Acknowledged__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Customer_Reported_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.Severity__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>CaseEdit</label>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>true</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Case</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+</PermissionSet>

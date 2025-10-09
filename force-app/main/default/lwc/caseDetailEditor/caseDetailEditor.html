@@ -1,0 +1,212 @@
+<template>
+    <div class="slds-grid slds-wrap">
+        <template if:true={isLoading}>
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-spinner alternative-text="Loading..."></lightning-spinner>
+            </div>
+        </template>
+
+        <template if:false={isLoading}>
+            <!-- First Column -->
+            <div class="slds-col slds-size_1-of-2 slds-p-right_small">
+                <!-- Subject -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="subject">Subject</label>
+                    <div class="slds-form-element__control">
+                        <lightning-input
+                            id="subject"
+                            type="text"
+                            value={subjectValue}
+                            data-field="Subject"
+                            onchange={handleInputChange}>
+                        </lightning-input>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="status">Status</label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                            id="status"
+                            value={statusValue}
+                            options={statusOptions}
+                            data-field="Status"
+                            onchange={handleInputChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <!-- Priority -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="priority">Priority</label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                            id="priority"
+                            value={priorityValue}
+                            options={priorityOptions}
+                            data-field="Priority"
+                            onchange={handleInputChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <!-- Origin -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="origin">Case Origin</label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                            id="origin"
+                            value={originValue}
+                            options={originOptions}
+                            data-field="Origin"
+                            onchange={handleInputChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <!-- Reason -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="reason">Case Reason</label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                            id="reason"
+                            value={reasonValue}
+                            options={reasonOptions}
+                            data-field="Reason"
+                            onchange={handleInputChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <!-- Language -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="language">Language</label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                            id="language"
+                            value={languageValue}
+                            options={languageOptions}
+                            data-field="Language"
+                            onchange={handleInputChange}>
+                        </lightning-combobox>
+                    </div>
+                </div>
+
+                <!-- Escalated -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <div class="slds-form-element__control">
+                        <lightning-input
+                            type="checkbox"
+                            label="Escalated"
+                            checked={escalatedValue}
+                            data-field="IsEscalated"
+                            onchange={handleInputChange}>
+                        </lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Column -->
+            <div class="slds-col slds-size_1-of-2 slds-p-left_small">
+                <!-- Contact -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="contact">Contact Name</label>
+                    <div class="slds-form-element__control">
+                        <lightning-input-field
+                            field-name="ContactId"
+                            value={contactValue}
+                            data-field="ContactId"
+                            onchange={handleInputChange}>
+                        </lightning-input-field>
+                    </div>
+                </div>
+
+                <!-- Case Owner -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="owner">Case Owner</label>
+                    <div class="slds-form-element__control">
+                        <lightning-input-field
+                            field-name="OwnerId"
+                            value={ownerValue}
+                            data-field="OwnerId"
+                            onchange={handleInputChange}>
+                        </lightning-input-field>
+                    </div>
+                </div>
+
+                <!-- Asset -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="asset">Asset</label>
+                    <div class="slds-form-element__control">
+                        <lightning-input-field
+                            field-name="AssetId"
+                            value={assetValue}
+                            data-field="AssetId"
+                            onchange={handleInputChange}>
+                        </lightning-input-field>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="description">Description</label>
+                    <div class="slds-form-element__control">
+                        <lightning-textarea
+                            id="description"
+                            value={descriptionValue}
+                            data-field="Description"
+                            onchange={handleInputChange}
+                            max-length="32000">
+                        </lightning-textarea>
+                    </div>
+                </div>
+
+                <!-- Close Summary -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="closeSummary">Close Summary</label>
+                    <div class="slds-form-element__control">
+                        <lightning-textarea
+                            id="closeSummary"
+                            value={closeSummaryValue}
+                            data-field="SDO_Service_Close_Summary__c"
+                            onchange={handleInputChange}
+                            max-length="32768">
+                        </lightning-textarea>
+                    </div>
+                </div>
+
+                <!-- Case Feedback -->
+                <div class="slds-form-element slds-m-bottom_small">
+                    <label class="slds-form-element__label" for="feedback">Case Feedback</label>
+                    <div class="slds-form-element__control">
+                        <lightning-textarea
+                            id="feedback"
+                            value={feedbackValue}
+                            data-field="Case_Feedback__c"
+                            onchange={handleInputChange}
+                            max-length="32000">
+                        </lightning-textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                <div class="slds-text-align_right">
+                    <lightning-button
+                        variant="neutral"
+                        label="Cancel"
+                        onclick={handleCancel}
+                        class="slds-m-right_small">
+                    </lightning-button>
+                    <lightning-button
+                        variant="brand"
+                        label="Save"
+                        onclick={handleSave}>
+                    </lightning-button>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>
